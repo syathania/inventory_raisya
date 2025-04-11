@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,19 +7,19 @@
     <title>Document</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">RAISYA</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="../jenis/index.php">jenis</a>
+          <a class="nav-link active" aria-current="page" href="#">barang</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">barang</a>
+          <a class="nav-link" href="../jenis/index.php">jenis</a>
         </li>
       </ul>
     </div>
@@ -27,16 +27,18 @@
 </nav>
 
 <div class="container"> 
-  <h1>Data Barang Raisya</h1>
-  <a href="view_tambah.php" class="btn btn-primary">Tambah Data Barang Baru</a>
+  <h1>DATA BARANG RAISYA</h1>
+  <a href="view_tambah.php" class="btn btn-primary">Tambah Data jenis baru</a>
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">ID Barang</th>
-      <th scope="col">Nama Barang</th>
-      <th scope="col">ID Jenis</th>
-      <th scope="col">Harga</th>
-      <th scope="col">Stok</th>
+      <th scope="col">#</th>
+      <th scope="col">id barang</th>
+      <th scope="col">nama barang</th>
+      <th scope="col">id jenis</th>
+      <th scope="col">harga</th>
+      <th scope="col">stok</th>
+    
       <th>Aksi</th>
     </tr>
   </thead>
@@ -46,16 +48,18 @@
                 $query = mysqli_query($conn, "SELECT * FROM barang");
                 $no = 1;
 
-                if (mysqli_num_rows($query) > 0) {
+                if (mysqli_num_rows($query)) {
+                  echo "Data Jenis ditemukan";
                     while ($result = mysqli_fetch_assoc($query)) {
                         ?>
                         <tr>
                             <td><?php echo $no; ?></td>
+                            <td><?php echo $result['id_barang']; ?></td>
                             <td><?php echo $result['nama_barang']; ?></td>
                             <td><?php echo $result['id_jenis']; ?></td>
                             <td><?php echo $result['harga']; ?></td>
                             <td><?php echo $result['stok']; ?></td>
-
+                           
                             <td>
                             <a href="view_edit.php?id=<?php echo $result['id_barang'] ?>" class="btn btn-warning">Edit</a>
                             <a href="hapus.php?id=<?php echo $result['id_barang'] ?>" 
